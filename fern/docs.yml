@@ -11,6 +11,17 @@ layout:
   page-width: full
 
 navigation:
+  - section: Quick Access
+    contents:
+      - link: Website
+        href: https://optivi.xyz
+        icon: fa-duotone fa-globe
+      - link: Platform
+        href: https://app.optivi.xyz
+        icon: fa-duotone fa-arrow-up-right-from-square
+      - link: X/Twitter
+        href: https://x.com/optivixyz
+        icon: fa-brands fa-x-twitter
   - section: Optivi Protocol
     contents:
       - page: About Optivi
@@ -32,12 +43,6 @@ navigation:
         icon: fa-duotone fa-graduation-cap
 
 navbar-links:
-  - type: minimal
-    text: Website
-    url: https://optivi.xyz
-  - type: minimal
-    text: X/Twitter
-    url: https://x.com/optivixyz
   - type: filled
     text: Platform
     url: https://app.optivi.xyz
