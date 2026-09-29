@@ -1,99 +1,69 @@
 # yaml-language-server: $schema=https://schema.buildwithfern.dev/docs-yml.json
 
 instances:
-  - url: optivi.docs.buildwithfern.com # update this to {yourorg}.docs.buildwithfern.com
-    # custom-domain: plantstore.dev # specify your custom domain when you are ready to go live
+  - url: optivi.docs.buildwithfern.com
+    # custom-domain: docs.optivi.xyz # uncomment when switching the domain from GitBook
 
-title: Fern Docs Starter
+title: Optivi Docs
 
 layout:
   searchbar-placement: header
   page-width: full
-  tabs-placement: header
-
-tabs:
-  home:
-    display-name: Docs
-    icon: home
-  API Reference:
-    display-name: API Reference
-    icon: puzzle
 
 navigation:
-  - tab: home
-    layout:
-      - section: Get started
-        contents:
-          - page: Welcome
-            path: docs/pages/welcome.mdx
-            icon: fa-duotone fa-house
-          - page: Edit your docs
-            path: docs/pages/editing-your-docs.mdx
-            icon: fa-duotone fa-pen-to-square
-          - page: Write content
-            path: docs/pages/writing-content.mdx
-            icon: fa-duotone fa-file-lines
-          - page: Set up navigation
-            path: docs/pages/navigation.mdx
-            icon: fa-duotone fa-sitemap
-          - page: Customize your docs
-            path: docs/pages/customization.mdx
-            icon: fa-duotone fa-palette
-          - page: Support
-            path: docs/pages/support.mdx
-            icon: fa-duotone fa-headset
-      - section: Changelog
-        contents:
-          - changelog: docs/changelog
-  - tab: API Reference
-    layout:
-      - section: Overview
-        contents:
-          - page: API reference
-            path: docs/pages/api-reference-overview.mdx
-            icon: fa-duotone fa-book
-      - api: Plant Store API
-        layout:
-          - section: Plants
-            referenced-packages:
-              - plant
-            contents: []
-          - section: Users
-            referenced-packages:
-              - user
-            contents: []
+  - section: Optivi Protocol
+    contents:
+      - page: About Optivi
+        path: docs/pages/about-optivi.mdx
+        icon: fa-duotone fa-circle-info
+      - page: Onboarding
+        path: docs/pages/onboarding.mdx
+        icon: fa-duotone fa-wallet
+      - page: Fees
+        path: docs/pages/fees.mdx
+        icon: fa-duotone fa-receipt
+      - page: Managing Positions
+        path: docs/pages/managing-positions.mdx
+        icon: fa-duotone fa-chart-line
+  - section: Guidebook
+    contents:
+      - page: Learn
+        path: docs/pages/learn.mdx
+        icon: fa-duotone fa-graduation-cap
 
 navbar-links:
   - type: minimal
-    text: Fork this repo
-    url: https://github.com/fern-api/docs-starter
+    text: Website
+    url: https://optivi.xyz
+  - type: minimal
+    text: X/Twitter
+    url: https://x.com/optivixyz
   - type: filled
-    text: Dashboard
-    url: https://dashboard.buildwithfern.com
-  - type: github
-    value: https://github.com/fern-api/fern
-      
+    text: Platform
+    url: https://app.optivi.xyz
+
 colors:
   accent-primary:
-    dark: "#70E155"
-    light: "#008700"
+    dark: "#6FEAFE"
+    light: "#0E7490"
   background:
-    dark: "#111113"
+    dark: "#010814"
     light: "#FFFFFF"
+  border:
+    dark: "#1F2C3A"
+    light: "#E2E8F0"
 
 theme:
   page-actions: toolbar
   footer-nav: minimal
 
 logo:
-  dark: docs/assets/logo-dark.svg
-  light: docs/assets/logo.svg
-  height: 20
-  href: https://buildwithfern.com
+  dark: docs/assets/logo-dark.png
+  light: docs/assets/logo-light.png
+  height: 24
+  href: https://optivi.xyz
 
-favicon: docs/assets/favicon.svg
-
-css: styles.css
+favicon: docs/assets/favicon.png
 
 metadata:
   og:dynamic: true
