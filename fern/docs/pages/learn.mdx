@@ -1,0 +1,155 @@
+---
+title: Learn
+---
+
+## 1. What are Options?
+
+An option is a financial contract that gives the buyer the right but not the obligation - to buy or sell an underlying asset at a predetermined price (the strike price) before or on a specific date (the expiry).
+
+The buyer pays a premium upfront for this right. The seller (writer) of the option receives that premium and takes on the obligation to fulfill the contract if the buyer chooses to exercise it.
+
+There are two fundamental types of options: Call options give the right to buy, and Put options give the right to sell.
+
+### Practical Example
+
+Imagine you want to buy an apartment listed at \$500,000, but you're not ready to commit yet. You pay the owner \$5,000 for the right to purchase it at \$500,000 within the next 30 days.
+
+If the apartment's value rises to \$520,000, you exercise your right and buy at \$500,000 - instantly \$15,000 in profit after the \$5,000 fee.
+
+If prices fall, you simply let the option expire. Your maximum loss is only the \$5,000 you paid, not the full apartment price.
+
+---
+
+## 2. Core Options definition
+
+### Before you trade, you need to understand the vocabulary. These are the essential terms you will encounter on Optivi.
+
+### Contract fundamentals
+
+1. **Strike price** - The fixed price at which the option gives you the right to buy (call) or sell (put) the underlying asset. Example: a \$100,000 BTC call option gives you the right to buy BTC at \$100,000 regardless of where the market price moves.
+2. **Premium** - The price you pay to purchase the option contract. This is your maximum possible loss. Premiums are quoted per unit of the underlying asset and depend on time to expiry, distance from the current price, and market volatility.
+3. **Expiry** - The exact date and time when the option contract settles. For European options on Optivi, this is the only moment the option can be exercised. Options expire worthless if they are out-of-the-money at expiry.
+4. **Underlying asset** - The asset the option is based on - BTC or ETH on Optivi. The option's value moves in relation to the spot price of the underlying.
+5. **Bid / Ask spread** - The difference between the highest price buyers will pay (bid) and the lowest price sellers will accept (ask). Tighter spreads = lower trading costs.
+6. **Long (buy calls)** - The button you press when you expect the price to go up. Buying a call gives you the right to profit from upside moves.
+7. **Short (buy puts)** - The button you press when you expect the price to go down. Buying a put gives you the right to profit from downside moves.
+
+### Moneyness (ITM / ATM / OTM)
+
+Moneyness describes the relationship between the current market price and the option's strike price.
+
+| Term | Call Option | Put Option |
+| --- | --- | --- |
+| In-the-Money (ITM) | Spot price &gt; Strike price | Spot price &lt; Strike price |
+| At-the-Money (ATM) | Spot price ≈ Strike price | Spot price ≈ Strike price |
+| Out-of-the-Money (OTM) | Spot price &lt; Strike price | Spot price &gt; Strike price |
+
+<Info>
+Example: BTC is trading at \$100,000. A call option with a \$95,000 strike is ITM (you could exercise it for instant profit). A call with a \$100,000 strike is ATM. A call with a \$110,000 strike is OTM - it only becomes profitable if BTC rallies past \$110,000 before expiry.
+</Info>
+
+---
+
+## 3. Options types
+
+### Not all options work the same way. The key difference between European and American options is when they can be exercised.
+
+| | European Options | American Options |
+| --- | --- | --- |
+| Exercise timing | At expiry only | Anytime before expiry |
+| Complexity | Simpler to price | More complex to price |
+| Common in crypto | ✓ Yes - standard | ✗ Less common |
+| Used on Optivi | ✓ Yes | ✗ No |
+| Premium cost | Generally lower | Generally higher |
+
+<Info>
+📌 Optivi Only Supports European Options
+
+All options traded on Optivi are European-style. This means you can only exercise your option at the moment of expiry, not before.
+
+In practice, however, you can close your position at any time before expiry by selling your option in the market, locking in profit or cutting losses early without waiting for the contract to expire.
+</Info>
+
+---
+
+## 4. Practical scenarios
+
+### The best way to understand options is through concrete examples. Below are four realistic trading scenarios comparing a long options position against a standard leveraged perpetual futures trade.
+
+### Baseline: BTC = \$100,000. You have \$100 to deploy.
+
+### Scenario 1 - Bullish: BTC Rallies 20%
+
+You expect BTC to move upward and want leveraged upside exposure.
+
+| | 10x Perpetual Long | Call Option (\$105k Strike) |
+| --- | --- | --- |
+| Capital used | \$100 margin | \$100 premium |
+| Effective exposure | \$1000 notional<br/>0.01 BTC | ~\$100,000 notional<br/>1 BTC |
+| BTC moves to | \$120,000 (+20%) | \$120,000 (+20%) |
+| Profit | +\$200 (200% ROI) | +\$14,900<br/>(\$120k - \$105k) x 1 BTC - \$100 Premium |
+| Liquidation risk | ✗ Yes - ~9% adverse move | ✓ No - max loss is premium |
+| Funding costs | ✗ Ongoing daily fees | ✓ None - paid upfront |
+| Verdict | Moderate profit, high risk | Massive upside, defined risk |
+
+### Scenario 2 - Bearish: BTC Drops 15%
+
+You want to position for a downside move.
+
+| | 10x Perpetual Short | Put Option (ATM) |
+| --- | --- | --- |
+| Capital used | \$1,000 margin | \$1,000 premium |
+| Effective exposure | \$10,000 notional | ~\$10,000 delta-adjusted |
+| BTC moves to | \$85,000 (-15%) | \$85,000 (-15%) |
+| Profit | +\$1,500 (150% ROI) | +\$1,200–1,500 (120–150% ROI) |
+| Liquidation risk | ✗ Yes - ~9% adverse move | ✓ No liquidation possible |
+| Short squeeze risk | ✗ Yes - can cause forced exit | ✓ Not applicable |
+| Verdict | Efficient but fragile | Slightly lower upside, no blowup risk |
+
+### Scenario 3 - Flash Crash & Recovery
+
+BTC crashes 12% in 30 minutes but fully recovers within the same day.
+
+| | 10x Perpetual Long | Call Option |
+| --- | --- | --- |
+| Position at open | \$1,000 margin, \$100k entry | \$1,000 premium, \$100k strike |
+| During crash (−12%) | ✗ Liquidated at ~\$90,900 | Option value drops, not closed |
+| After recovery (+12%) | Position no longer exists | ✓ Option near original value |
+| End of day P&amp;L | −\$1,000 (full loss) | −\$100 to −\$200 (small loss) |
+| What saved you | Nothing liquidated | ✓ No margin call possible |
+
+<Tip title="Why This Matters">
+Flash crashes happen regularly in crypto. On perps, a liquidation engine exits your position at the worst possible moment. Options simply lose value temporarily - they cannot be force-closed by the protocol. If the market recovers, you recover with it.
+</Tip>
+
+---
+
+## 5. Options vs Futures
+
+### If you're already trading perpetual futures, here's why options deserve a place in your toolkit.
+
+1. No liquidations - This is the single biggest advantage. When you buy an option, the worst possible outcome is losing the premium you paid. There is no liquidation engine waiting to wipe you out at the worst moment. Flash crashes, cascading liquidations, exchange outages - none of these can force-close your option position.
+2. Defined risk, unlimited upside - Your maximum loss is fixed the moment you enter the trade. But your potential gain is uncapped. For call options, there is no theoretical ceiling on profit - if BTC 10x's before expiry, you capture the full move.
+3. Capital Efficiency throught leverage - Options give you leveraged directional exposure without the full capital requirement. A \$1,000 premium on an ATM option controls a notional position worth many times that - without needing to post additional margin or worry about maintenance requirements.
+4. No funding rate - Perpetual futures charge ongoing funding rates - which can become significantly negative during trending markets, eroding your position over time. Options have a one-time, upfront cost (the premium) with zero ongoing fees.
+5. Trade the volatility, not just direction - With futures, you need to predict direction. With options, you can profit from an increase in market volatility itself - even if you're wrong about the direction of the move.
+
+| | Perpetual Futures | Options on Optivi |
+| --- | --- | --- |
+| Liquidation risk | ✗ Yes | ✓ Never |
+| Max loss | Up to 100% of margin (or more) | Premium paid only |
+| Upside potential | Linear Upside | Asymmetric Upside |
+| Funding costs | ✗ Ongoing | ✓ None |
+| Directional flexibility | Long / Short only | Long / Short + Volatility |
+| Flash crash exposure | ✗ High → liquidation risk | ✓ None → holds through volatility |
+| Strategy complexity | Basic | Basic to advanced |
+
+---
+
+## 6. Risk Characteristics
+
+Options eliminate liquidation risk - but they come with their own risks worth understanding.
+
+Premium loss. If your option expires out-of-the-money, you lose 100% of the premium paid. That's your maximum loss - defined upfront, never a surprise. But unlike a futures trade you can exit early with a partial loss, an OTM option at expiry goes to zero. This hits hardest on short-dated, far-OTM positions.
+
+Directional risk. You can simply be wrong. A call loses value as price drops; a put loses value as price rises. You won't get liquidated - but if your thesis is wrong at expiry, the premium is gone.
