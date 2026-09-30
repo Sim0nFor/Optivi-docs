@@ -131,7 +131,7 @@ Flash crashes happen regularly in crypto. On perps, a liquidation engine exits y
 
 1. No liquidations - This is the single biggest advantage. When you buy an option, the worst possible outcome is losing the premium you paid. There is no liquidation engine waiting to wipe you out at the worst moment. Flash crashes, cascading liquidations, exchange outages - none of these can force-close your option position.
 2. Defined risk, unlimited upside - Your maximum loss is fixed the moment you enter the trade. But your potential gain is uncapped. For call options, there is no theoretical ceiling on profit - if BTC 10x's before expiry, you capture the full move.
-3. Capital Efficiency throught leverage - Options give you leveraged directional exposure without the full capital requirement. A \$1,000 premium on an ATM option controls a notional position worth many times that - without needing to post additional margin or worry about maintenance requirements.
+3. Capital Efficiency through leverage - Options give you leveraged directional exposure without the full capital requirement. A \$1,000 premium on an ATM option controls a notional position worth many times that - without needing to post additional margin or worry about maintenance requirements.
 4. No funding rate - Perpetual futures charge ongoing funding rates - which can become significantly negative during trending markets, eroding your position over time. Options have a one-time, upfront cost (the premium) with zero ongoing fees.
 5. Trade the volatility, not just direction - With futures, you need to predict direction. With options, you can profit from an increase in market volatility itself - even if you're wrong about the direction of the move.
 
@@ -154,6 +154,10 @@ Options eliminate liquidation risk - but they come with their own risks worth un
 Premium loss. If your option expires out-of-the-money, you lose 100% of the premium paid. That's your maximum loss - defined upfront, never a surprise. But unlike a futures trade you can exit early with a partial loss, an OTM option at expiry goes to zero. This hits hardest on short-dated, far-OTM positions.
 
 Directional risk. You can simply be wrong. A call loses value as price drops; a put loses value as price rises. You won't get liquidated - but if your thesis is wrong at expiry, the premium is gone.
+
+<Warning title="Risk disclaimer">
+Options trading involves significant risk. You can lose the entire premium you pay for an option. The examples on this page are for illustration only and do not reflect current market prices. Nothing in these docs is financial or investment advice. Only trade with funds you can afford to lose.
+</Warning>
 
 ---
 
