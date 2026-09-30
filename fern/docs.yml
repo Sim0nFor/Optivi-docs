@@ -6,6 +6,9 @@ instances:
 
 title: Optivi Docs
 
+announcement:
+  message: "Options on XRP, ZEC and XAUT are now live on Optivi. <a href=\"https://app.optivi.xyz\" target=\"_blank\">Start trading →</a>"
+
 layout:
   searchbar-placement: header
   page-width: full
@@ -71,4 +74,9 @@ logo:
 favicon: docs/assets/favicon.png
 
 metadata:
-  og:dynamic: true
+  og:site_name: Optivi Docs
+  og:image: https://raw.githubusercontent.com/Sim0nFor/Optivi-docs/main/fern/docs/assets/og-image.jpg
+  og:image:width: 1200
+  og:image:height: 630
+  twitter:card: summary_large_image
+  twitter:site: "@optivixyz"
