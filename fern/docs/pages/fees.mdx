@@ -5,13 +5,13 @@ subtitle: How trading fees are calculated when you open and close positions.
 
 ## Fee Structure
 
-Optivi applies a simple fee structure depending on whether an order is placed as a maker or taker.
+Optivi applies a simple fee structure. Opening a position is always a taker order.
 
 ### Base Trading Fees
 
 * Taker base fee: \$0.75 per order (includes Optivi’s \$0.25 broker fee)
 * Taker fee: 0.04% of notional value (includes Optivi’s 0.01% broker fee)
-* Maker fee: 0.01% of notional value
+* Maker fee (closing only): 0.01% of notional value
 
 ---
 
@@ -38,19 +38,23 @@ Alice buys 2 ETH \$2,500 puts, oracle spot = \$2,800, total premium = \$240:
 
 ## Closing a Position Before Expiry (selling calls or puts)
 
-Formula: **min(notional × 0.01%, premium × 12.5%)**
+Formula: **\$0.50 + min(notional × 0.01%, premium × 12.5%)**
 
-When closing an options position before expiry (placing limit order to sell), the fee is calculated as the lower of:
+When closing an options position before expiry (placing limit order to sell), the fee is calculated as:
 
-* 0.01% of notional value, or
-* 12.5% of option premium
+* \$0.50 base fee
+* plus the lower of:
+  * 0.01% of notional value, or
+  * 12.5% of option premium
+
+If your closing order fills immediately (taker), the rate is 0.03% instead of 0.01%.
 
 Example:
 
 <Info>
 Bob closes 1 ETH put before expiry, oracle spot = \$3,000, premium = \$90:
 
-`fee = min($3,000 × 0.01%, $90 × 12.5%) = min($0.30, $11.25) = $0.30`
+`fee = $0.50 + min($3,000 × 0.01%, $90 × 12.5%) = $0.50 + min($0.30, $11.25) = $0.80`
 </Info>
 
 ---
