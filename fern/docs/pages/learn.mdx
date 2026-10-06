@@ -5,7 +5,7 @@ subtitle: Options basics, key terms and practical scenarios compared with perpet
 
 ## 1. What are Options?
 
-An option is a financial contract that gives the buyer the right but not the obligation - to buy or sell an underlying asset at a predetermined price (the strike price) before or on a specific date (the expiry).
+An option is a financial contract that gives the buyer the right, but not the obligation, to buy or sell an underlying asset at a predetermined price (the strike price) before or on a specific date (the expiry).
 
 The buyer pays a premium upfront for this right. The seller (writer) of the option receives that premium and takes on the obligation to fulfill the contract if the buyer chooses to exercise it.
 
@@ -21,7 +21,7 @@ If prices fall, you simply let the option expire. Your maximum loss is only the 
 
 ---
 
-## 2. Core Options definition
+## 2. Core definitions
 
 ### Before you trade, you need to understand the vocabulary. These are the essential terms you will encounter on Optivi.
 
@@ -30,7 +30,7 @@ If prices fall, you simply let the option expire. Your maximum loss is only the 
 1. **Strike price** - The fixed price at which the option gives you the right to buy (call) or sell (put) the underlying asset. Example: a \$100,000 BTC call option gives you the right to buy BTC at \$100,000 regardless of where the market price moves.
 2. **Premium** - The price you pay to purchase the option contract. This is your maximum possible loss. Premiums are quoted per unit of the underlying asset and depend on time to expiry, distance from the current price, and market volatility.
 3. **Expiry** - The exact date and time when the option contract settles. For European options on Optivi, this is the only moment the option can be exercised. Options expire worthless if they are out-of-the-money at expiry.
-4. **Underlying asset** - The asset the option is based on - BTC or ETH on Optivi. The option's value moves in relation to the spot price of the underlying.
+4. **Underlying asset** - The asset the option is based on - e.g. BTC or ETH. The option's value moves in relation to the spot price of the underlying.
 5. **Bid / Ask spread** - The difference between the highest price buyers will pay (bid) and the lowest price sellers will accept (ask). Tighter spreads = lower trading costs.
 6. **Long (buy calls)** - The button you press when you expect the price to go up. Buying a call gives you the right to profit from upside moves.
 7. **Short (buy puts)** - The button you press when you expect the price to go down. Buying a put gives you the right to profit from downside moves.
@@ -75,9 +75,11 @@ In practice, however, you can close your position at any time before expiry by s
 
 ## 4. Practical scenarios
 
-### The best way to understand options is through concrete examples. Below are four realistic trading scenarios comparing a long options position against a standard leveraged perpetual futures trade.
+### The best way to understand options is through concrete examples. Below are three realistic trading scenarios comparing a long options position against a standard leveraged perpetual futures trade.
 
-### Baseline: BTC = \$100,000. You have \$100 to deploy.
+### Baseline: BTC = \$100,000. You have \$1,000 to deploy.
+
+Options in these examples expire in 2 weeks. Premiums are rounded but close to real market prices. Profits are shown at expiry.
 
 ### Scenario 1 - Bullish: BTC Rallies 20%
 
@@ -85,10 +87,10 @@ You expect BTC to move upward and want leveraged upside exposure.
 
 | | 10x Perpetual Long | Call Option (\$105k Strike) |
 | --- | --- | --- |
-| Capital used | \$100 margin | \$100 premium |
-| Effective exposure | \$1000 notional<br/>0.01 BTC | ~\$100,000 notional<br/>1 BTC |
+| Capital used | \$1,000 margin | \$1,000 premium<br/>(\$2,000 per BTC) |
+| Effective exposure | \$10,000 notional<br/>0.1 BTC | \$50,000 notional<br/>0.5 BTC |
 | BTC moves to | \$120,000 (+20%) | \$120,000 (+20%) |
-| Profit | +\$200 (200% ROI) | +\$14,900<br/>(\$120k - \$105k) x 1 BTC - \$100 Premium |
+| Profit | +\$2,000 (200% ROI) | +\$6,500 (650% ROI)<br/>(\$120k - \$105k) x 0.5 BTC - \$1,000 premium |
 | Liquidation risk | ✗ Yes - ~9% adverse move | ✓ No - max loss is premium |
 | Funding costs | ✗ Ongoing daily fees | ✓ None - paid upfront |
 | Verdict | Moderate profit, high risk | Massive upside, defined risk |
@@ -99,13 +101,13 @@ You want to position for a downside move.
 
 | | 10x Perpetual Short | Put Option (ATM) |
 | --- | --- | --- |
-| Capital used | \$1,000 margin | \$1,000 premium |
-| Effective exposure | \$10,000 notional | ~\$10,000 delta-adjusted |
+| Capital used | \$1,000 margin | \$1,000 premium<br/>(\$4,000 per BTC) |
+| Effective exposure | \$10,000 notional<br/>0.1 BTC | \$25,000 notional<br/>0.25 BTC |
 | BTC moves to | \$85,000 (-15%) | \$85,000 (-15%) |
-| Profit | +\$1,500 (150% ROI) | +\$1,200–1,500 (120–150% ROI) |
+| Profit | +\$1,500 (150% ROI) | +\$2,750 (275% ROI)<br/>(\$100k - \$85k) x 0.25 BTC - \$1,000 premium |
 | Liquidation risk | ✗ Yes - ~9% adverse move | ✓ No liquidation possible |
 | Short squeeze risk | ✗ Yes - can cause forced exit | ✓ Not applicable |
-| Verdict | Efficient but fragile | Slightly lower upside, no blowup risk |
+| Verdict | Efficient but fragile | Bigger payoff on a big move, but the premium is lost if BTC doesn't drop by expiry |
 
 ### Scenario 3 - Flash Crash & Recovery
 
@@ -113,11 +115,11 @@ BTC crashes 12% in 30 minutes but fully recovers within the same day.
 
 | | 10x Perpetual Long | Call Option |
 | --- | --- | --- |
-| Position at open | \$1,000 margin, \$100k entry | \$1,000 premium, \$100k strike |
+| Position at open | \$1,000 margin, \$100k entry | \$1,000 premium, \$100k strike<br/>0.25 BTC |
 | During crash (−12%) | ✗ Liquidated at ~\$90,900 | Option value drops, not closed |
 | After recovery (+12%) | Position no longer exists | ✓ Option near original value |
-| End of day P&amp;L | −\$1,000 (full loss) | −\$100 to −\$200 (small loss) |
-| What saved you | Nothing liquidated | ✓ No margin call possible |
+| End of day P&amp;L | −\$1,000 (full loss) | About −\$50 (one day of time value) |
+| What saved you | Nothing, position was liquidated | ✓ No margin call possible |
 
 <Tip title="Why This Matters">
 Flash crashes happen regularly in crypto. On perps, a liquidation engine exits your position at the worst possible moment. Options simply lose value temporarily - they cannot be force-closed by the protocol. If the market recovers, you recover with it.
@@ -151,7 +153,7 @@ Flash crashes happen regularly in crypto. On perps, a liquidation engine exits y
 
 Options eliminate liquidation risk - but they come with their own risks worth understanding.
 
-Premium loss. If your option expires out-of-the-money, you lose 100% of the premium paid. That's your maximum loss - defined upfront, never a surprise. But unlike a futures trade you can exit early with a partial loss, an OTM option at expiry goes to zero. This hits hardest on short-dated, far-OTM positions.
+Premium loss. If your option expires out-of-the-money, you lose 100% of the premium paid. That's your maximum loss - defined upfront, never a surprise. You can sell the option before expiry and get part of the premium back, but if you hold an OTM option until expiry, it goes to zero. This hits hardest on short-dated, far-OTM positions.
 
 Directional risk. You can simply be wrong. A call loses value as price drops; a put loses value as price rises. You won't get liquidated - but if your thesis is wrong at expiry, the premium is gone.
 
